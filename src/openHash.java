@@ -6,7 +6,7 @@ public class openHash {
     private int m;
     private int count;
 
-    // Constructor
+
     public openHash(int m) {
         this.m = m;
         this.keys = new String[m];
