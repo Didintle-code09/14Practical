@@ -23,8 +23,8 @@ public class Practical14 {
         System.out.println("---------------------------------------------------------------");
 
         for (int lf : loadFactors) {
-            int N = lf * 10000; // e.g. 750000 for 75%
-            int m = (int)(N / (lf / 100.0)); // table size
+            int N = lf * 10000; //
+            int m = (int)(N / (lf / 100.0));
 
             openHash openTable = new openHash(m + 1);
             chainedHash chainedTable = new chainedHash(m + 1);
