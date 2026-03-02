@@ -3,8 +3,8 @@ import java.util.Arrays;
 public class openHash {
     private String[] keys;
     private String[] values;
-    private int m;       // table size
-    private int count;   // number of elements
+    private int m;
+    private int count;
 
     // Constructor
     public openHash(int m) {
@@ -14,13 +14,13 @@ public class openHash {
         this.count = 0;
     }
 
-    // (a) Scatter function (hash function)
+
     private int hash(String key) {
-        // Use Java's built-in hashCode, ensure non-negative, mod table size
+
         return (key.hashCode() & 0x7fffffff) % m;
     }
 
-    // (b) Insert key-value pair
+
     public void insert(String key, String value) {
         if (isFull()) {
             throw new RuntimeException("Hash table is full");
@@ -29,17 +29,17 @@ public class openHash {
         int i = hash(key);
         while (keys[i] != null) {
             if (keys[i].equals(key)) {
-                values[i] = value; // update existing
+                values[i] = value;
                 return;
             }
-            i = (i + 1) % m; // linear probing
+            i = (i + 1) % m;
         }
         keys[i] = key;
         values[i] = value;
         count++;
     }
 
-    // (c) Lookup value by key
+
     public String lookup(String key) {
         int i = hash(key);
         while (keys[i] != null) {
@@ -51,7 +51,7 @@ public class openHash {
         return null;
     }
 
-    // (d) Remove key-value pair
+
     public String remove(String key) {
         int i = hash(key);
         while (keys[i] != null) {
@@ -61,7 +61,7 @@ public class openHash {
                 values[i] = null;
                 count--;
 
-                // Rehash subsequent keys to avoid breaking the chain
+
                 i = (i + 1) % m;
                 while (keys[i] != null) {
                     String reKey = keys[i];
